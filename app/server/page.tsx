@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { useEffect } from "react";
-import { getClient } from "./lib/apollaClient";
+import { getClient } from "../lib/apollaClient";
 import { gql } from "@apollo/client";
 // 
 const query = gql`query Query {
