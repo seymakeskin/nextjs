@@ -1,6 +1,38 @@
+"use client"
 import Image from "next/image";
 
+
+import { gql, useQuery } from '@apollo/client';
+import { getClient } from "./src/libs/client";
+
+// import '../styles/globals.css';
+
+
 export default function Home() {
+  const client = getClient();
+  const GET_DATA = gql`
+  query Query {
+    country(code: "BR") {
+      name
+      native
+      capital
+      emoji
+      currency
+      languages {
+        code
+        name
+      }
+    }
+  }
+`;
+  // const { loading, error, data } = useQuery(GET_DATA);
+  // console.log('loading',loading,'error',error, 'data',data );
+
+  const { data } =  client.query({
+    query: GET_DATA,
+
+  });
+   
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
