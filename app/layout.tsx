@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ApolloWrapper } from "./apollo-wrapper";
+import Header from "./components/Header";
+
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './src/theme';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,9 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+      <ThemeProvider theme={theme}>
+        <Header></Header>
         <ApolloWrapper>{children}</ApolloWrapper>
+       </ThemeProvider>
+
         </body>
-     
     </html>
   );
 }
